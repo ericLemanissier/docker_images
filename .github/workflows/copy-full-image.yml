@@ -28,9 +28,9 @@ jobs:
       max-parallel: 1
       matrix:
         copy:
-        - src: ghcr.io/christopherhx/runner-images:ubuntu24-runner-large-${{ inputs.version || 'latest' }}
+        - src: ghcr.io/christopherhx/runner-images:ubuntu26-runner-large-${{ inputs.version || 'latest' }}
           dest: full-latest
-        - src: ghcr.io/christopherhx/runner-images:ubuntu20-runner-large-${{ inputs.version || 'latest' }}
+        - src: ghcr.io/christopherhx/runner-images:ubuntu26-runner-large-${{ inputs.version || 'latest' }}
           dest: full-26.04
         - src: ghcr.io/christopherhx/runner-images:ubuntu24-runner-large-${{ inputs.version || 'latest' }}
           dest: full-24.04
