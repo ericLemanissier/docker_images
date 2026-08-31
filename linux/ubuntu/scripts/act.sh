@@ -110,9 +110,8 @@ else
   echo "deb [signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 fi
 mkdir -p /usr/share/keyrings
-wget -q https://packages.microsoft.com/keys/microsoft.asc
-gpg --dearmor <microsoft.asc >/usr/share/keyrings/microsoft.gpg
-rm microsoft.asc
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O - | gpg --dearmor > /usr/share/keyrings/microsoft.gpg
+wget -q https://packages.microsoft.com/keys/microsoft-2025.asc -O - | gpg --dearmor >> /usr/share/keyrings/microsoft.gpg
 apt-get -yq update
 apt-get -yq install --no-install-recommends --no-install-suggests moby-engine moby-cli moby-buildx moby-compose
 
