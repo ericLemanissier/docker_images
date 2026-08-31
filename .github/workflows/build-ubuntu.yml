@@ -135,6 +135,7 @@ jobs:
           STORAGE_DRIVER: overlay
           STORAGE_OPTS: overlay.mount_program=
         run: |
+          buildah info --format '{{.store.graphOptions}}{{"\n"}}{{.store.graphStatus}}'
           $tags = @()
           $tagNames = @( "$env:TAG-$env:PART_TAG" )
           if($env:PUSH_LATEST) {
