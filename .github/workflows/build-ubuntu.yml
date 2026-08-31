@@ -132,6 +132,7 @@ jobs:
           BUILD_TAG: act-${{ matrix.TAG }}
           PUSH_LATEST: ${{ env.LATEST_TAG == matrix.TAG && '1' || '' }}
           PUSH_DEFAULT: ${{ ( github.event_name != 'pull_request' && github.event_name != 'push' && !env.ACT ) && '1' || '' }}
+          STORAGE_DRIVER: overlay
           STORAGE_OPTS: overlay.mount_program=
         run: |
           $tags = @()
@@ -177,6 +178,7 @@ jobs:
           BUILD_TAG: runner-${{ matrix.TAG }}
           PUSH_LATEST: ${{ env.LATEST_TAG == matrix.TAG && '1' || '' }}
           PUSH_DEFAULT: ${{ ( github.event_name != 'pull_request' && github.event_name != 'push' && !env.ACT ) && '1' || '' }}
+          STORAGE_DRIVER: overlay
           STORAGE_OPTS: overlay.mount_program=
         run: |
           $tags = @()
@@ -355,6 +357,7 @@ jobs:
           BUILD_TAG_VERSION: ${{ env.PART_TAG }}
           PUSH_LATEST: ${{ env.LATEST_TAG == matrix.TAG && '1' || '' }}
           PUSH_DEFAULT: ${{ ( github.event_name != 'pull_request' && github.event_name != 'push' && !env.ACT ) && '1' || '' }}
+          STORAGE_DRIVER: overlay
           STORAGE_OPTS: overlay.mount_program=
         run: |
           $tags = @()
