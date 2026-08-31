@@ -107,11 +107,11 @@ printf "\n\t🐋 Installing docker cli 🐋\t\n"
 if [[ "${VERSION_ID}" == "18.04" ]]; then
   echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/multiarch/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 else
-  echo "deb https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
+  echo "deb [signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/ubuntu/${VERSION_ID}/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 fi
-mkdir -p /etc/apt/keyrings
+mkdir -p /usr/share/keyrings
 wget -q https://packages.microsoft.com/keys/microsoft.asc
-gpg --dearmor <microsoft.asc >/etc/apt/keyrings/microsoft.gpg
+gpg --dearmor <microsoft.asc >/usr/share/keyrings/microsoft.gpg
 rm microsoft.asc
 apt-get -yq update
 apt-get -yq install --no-install-recommends --no-install-suggests moby-engine moby-cli moby-buildx moby-compose
