@@ -48,9 +48,9 @@ jobs:
         PLATFORMS:
           - linux/amd64,linux/arm64,linux/arm/v7
         TAG:
+          - 26.04
           - 24.04
           - 22.04
-          - 20.04
     steps:
       - name: Disable apparmor restrictions
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
@@ -239,9 +239,9 @@ jobs:
       max-parallel: 8
       matrix:
         TAG:
+          - 26.04
           - 24.04
           - 22.04
-          - 20.04
         TYPE:
           - go
           - js
@@ -268,9 +268,6 @@ jobs:
             TYPE: gh
           - PLATFORMS: linux/amd64,linux/arm64
             TYPE: custom
-        exclude:
-          - TAG: 20.04
-            TYPE: go
     steps:
       - name: Disable apparmor restrictions
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
